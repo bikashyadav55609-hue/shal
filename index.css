@@ -1,0 +1,389 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --theme-bg: #fff6f0;
+    --theme-bg-soft: #f9dce4;
+    --theme-bg-blush: #f6d0da;
+    --theme-rose: #efafc1;
+    --theme-dusty-rose: #d58aa3;
+    --theme-accent: #b65f7d;
+    --theme-accent-hover: #994865;
+    --theme-accent-soft: #f6d0da;
+    --theme-champagne: #f7e5d5;
+    --theme-peach: #f9d6cb;
+    --theme-mauve: #b88b9d;
+    --theme-sage: #a5b99b;
+    --theme-gold: #d7b477;
+    --theme-surface: #fff9f5;
+    --theme-ink: #563443;
+    --theme-ink-muted: #7f5a6b;
+    --theme-border: rgba(213, 138, 163, 0.28);
+    --theme-gold-border: rgba(215, 180, 119, 0.45);
+  }
+
+  [data-theme="lavender-meadow"] {
+    --theme-bg: #fdf7fa;
+    --theme-bg-soft: #f2e1ee;
+    --theme-bg-blush: #e8cde1;
+    --theme-rose: #dfadc9;
+    --theme-dusty-rose: #ba7ea4;
+    --theme-accent: #9b5584;
+    --theme-accent-hover: #82426d;
+    --theme-accent-soft: #ebd4e4;
+    --theme-champagne: #f5ebe5;
+    --theme-peach: #f5dce2;
+    --theme-mauve: #a9829c;
+    --theme-sage: #9cb59c;
+    --theme-gold: #d5b179;
+    --theme-surface: #fffbfd;
+    --theme-ink: #4a3044;
+    --theme-ink-muted: #77596f;
+    --theme-border: rgba(155, 85, 132, 0.25);
+    --theme-gold-border: rgba(213, 177, 121, 0.45);
+  }
+
+  [data-theme="peach-blossom"] {
+    --theme-bg: #fff6f0;
+    --theme-bg-soft: #fbe3dc;
+    --theme-bg-blush: #f7ccc0;
+    --theme-rose: #eeaea9;
+    --theme-dusty-rose: #cf7d85;
+    --theme-accent: #b85866;
+    --theme-accent-hover: #9e4552;
+    --theme-accent-soft: #f7cfc7;
+    --theme-champagne: #f8eadc;
+    --theme-peach: #f9d6cb;
+    --theme-mauve: #bd8d92;
+    --theme-sage: #a2b798;
+    --theme-gold: #d8b272;
+    --theme-surface: #fffaf7;
+    --theme-ink: #563443;
+    --theme-ink-muted: #805b60;
+    --theme-border: rgba(184, 88, 102, 0.26);
+    --theme-gold-border: rgba(216, 178, 114, 0.45);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--theme-bg);
+    color: var(--theme-ink);
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-color: var(--theme-bg);
+    color: var(--theme-ink);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+.font-serif-display {
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+.font-script {
+  font-family: "Great Vibes", cursive;
+}
+
+.font-handwriting {
+  font-family: "Caveat", cursive;
+}
+
+.paper-texture {
+  background-image: radial-gradient(
+      rgba(213, 138, 163, 0.055) 1px,
+      transparent 0
+    ),
+    radial-gradient(rgba(215, 180, 119, 0.055) 1px, transparent 0);
+  background-size: 24px 24px;
+  background-position: 0 0, 12px 12px;
+}
+
+.floral-lattice-bg {
+  background-image: radial-gradient(
+      circle at 18% 20%,
+      rgba(246, 208, 218, 0.38) 0%,
+      transparent 48%
+    ),
+    radial-gradient(
+      circle at 84% 18%,
+      rgba(249, 214, 203, 0.4) 0%,
+      transparent 46%
+    ),
+    radial-gradient(
+      circle at 52% 84%,
+      rgba(239, 175, 193, 0.28) 0%,
+      transparent 55%
+    );
+}
+
+.stationery-panel {
+  background: linear-gradient(180deg, #fffaf6 0%, #fff2eb 100%);
+  border: 1px solid rgba(213, 138, 163, 0.28);
+  box-shadow: 0 22px 58px -24px rgba(182, 95, 125, 0.26),
+    inset 0 0 0 1px rgba(215, 180, 119, 0.25);
+}
+
+@keyframes float-petal-drift {
+  0% {
+    transform: translate3d(0, -10vh, 0) rotate(0deg);
+    opacity: 0;
+  }
+  6% {
+    opacity: var(--petal-opacity, 0.88);
+  }
+  35% {
+    transform: translate3d(var(--petal-sway-a, 24px), 30vh, 0) rotate(110deg);
+    opacity: var(--petal-opacity, 0.86);
+  }
+  70% {
+    transform: translate3d(var(--petal-sway-b, -20px), 68vh, 0) rotate(220deg);
+    opacity: var(--petal-opacity, 0.8);
+  }
+  90% {
+    opacity: 0.65;
+  }
+  100% {
+    transform: translate3d(var(--petal-sway-c, 34px), 108vh, 0) rotate(330deg);
+    opacity: 0;
+  }
+}
+
+@keyframes butterfly-wing-flap {
+  0%,
+  100% {
+    transform: scaleX(1) scaleY(1);
+  }
+  50% {
+    transform: scaleX(0.32) scaleY(0.96);
+  }
+}
+
+@keyframes butterfly-glide-a {
+  0% {
+    transform: translate3d(-8vw, 24vh, 0) rotate(12deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.88;
+  }
+  32% {
+    transform: translate3d(26vw, 14vh, 0) rotate(-6deg);
+  }
+  48% {
+    transform: translate3d(38vw, 22vh, 0) rotate(4deg);
+  }
+  74% {
+    transform: translate3d(72vw, 11vh, 0) rotate(10deg);
+    opacity: 0.85;
+  }
+  92% {
+    opacity: 0.72;
+  }
+  100% {
+    transform: translate3d(108vw, 26vh, 0) rotate(16deg);
+    opacity: 0;
+  }
+}
+
+@keyframes butterfly-glide-b {
+  0% {
+    transform: translate3d(106vw, 62vh, 0) scaleX(-1) rotate(10deg);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.84;
+  }
+  38% {
+    transform: translate3d(68vw, 48vh, 0) scaleX(-1) rotate(-8deg);
+  }
+  65% {
+    transform: translate3d(34vw, 56vh, 0) scaleX(-1) rotate(6deg);
+  }
+  90% {
+    opacity: 0.75;
+  }
+  100% {
+    transform: translate3d(-10vw, 40vh, 0) scaleX(-1) rotate(14deg);
+    opacity: 0;
+  }
+}
+
+@keyframes butterfly-glide-c {
+  0% {
+    transform: translate3d(12vw, 102vh, 0) rotate(-18deg);
+    opacity: 0;
+  }
+  14% {
+    opacity: 0.8;
+  }
+  45% {
+    transform: translate3d(42vw, 68vh, 0) rotate(8deg);
+  }
+  72% {
+    transform: translate3d(64vw, 38vh, 0) rotate(-10deg);
+    opacity: 0.78;
+  }
+  100% {
+    transform: translate3d(94vw, -8vh, 0) rotate(-14deg);
+    opacity: 0;
+  }
+}
+
+@keyframes float-heart-up {
+  0% {
+    transform: translate3d(0, 104vh, 0) scale(0.8);
+    opacity: 0;
+  }
+  15% {
+    opacity: calc(var(--heart-opacity, 0.35) * var(--decor-heart-opacity, 1));
+  }
+  50% {
+    transform: translate3d(var(--heart-sway-a, 14px), 50vh, 0) scale(1);
+    opacity: calc(var(--heart-opacity, 0.35) * 0.9 * var(--decor-heart-opacity, 1));
+  }
+  85% {
+    opacity: calc(var(--heart-opacity, 0.35) * 0.7 * var(--decor-heart-opacity, 1));
+  }
+  100% {
+    transform: translate3d(var(--heart-sway-b, -10px), -8vh, 0) scale(0.9);
+    opacity: 0;
+  }
+}
+
+@keyframes orb-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: var(--decor-orb-opacity, 0.92);
+  }
+  50% {
+    transform: translate3d(var(--orb-drift-x, 24px), var(--orb-drift-y, -18px), 0)
+      scale(var(--orb-scale, 1.08));
+    opacity: var(--decor-orb-opacity, 0.92);
+  }
+}
+
+@keyframes twinkle-star {
+  0%,
+  100% {
+    opacity: calc(0.28 * var(--decor-sparkle-opacity, 1));
+    transform: scale(0.88);
+  }
+  50% {
+    opacity: var(--decor-sparkle-opacity, 1);
+    transform: scale(1.22);
+  }
+}
+
+@keyframes gentle-sway {
+  0%,
+  100% {
+    transform: rotate(-2.5deg);
+  }
+  50% {
+    transform: rotate(2.5deg);
+  }
+}
+
+@keyframes bouquet-breathe {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-3px) scale(1.012);
+  }
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 1;
+  }
+}
+
+.animate-petal {
+  animation: float-petal-drift var(--petal-duration, 15s) linear infinite;
+  animation-delay: var(--petal-delay, 0s);
+}
+
+.animate-butterfly-wing {
+  animation: butterfly-wing-flap var(--wing-speed, 0.42s) ease-in-out infinite;
+  transform-origin: center center;
+}
+
+.animate-butterfly-a {
+  animation: butterfly-glide-a var(--flight-duration, 26s) ease-in-out infinite;
+  animation-delay: var(--flight-delay, 0s);
+}
+
+.animate-butterfly-b {
+  animation: butterfly-glide-b var(--flight-duration, 30s) ease-in-out infinite;
+  animation-delay: var(--flight-delay, 0s);
+}
+
+.animate-butterfly-c {
+  animation: butterfly-glide-c var(--flight-duration, 28s) ease-in-out infinite;
+  animation-delay: var(--flight-delay, 0s);
+}
+
+.animate-float-heart {
+  animation: float-heart-up var(--heart-duration, 22s) ease-in-out infinite;
+  animation-delay: var(--heart-delay, 0s);
+  will-change: transform, opacity;
+}
+
+.animate-orb {
+  animation: orb-drift var(--orb-duration, 18s) ease-in-out infinite;
+  animation-delay: var(--orb-delay, 0s);
+  will-change: transform, opacity;
+}
+
+.animate-twinkle {
+  animation: twinkle-star var(--twinkle-duration, 3.6s) ease-in-out infinite;
+  animation-delay: var(--twinkle-delay, 0s);
+  will-change: transform, opacity;
+}
+
+.animate-sway {
+  animation: gentle-sway 5s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+.animate-bouquet-breathe {
+  animation: bouquet-breathe 5.5s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 3.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-petal,
+  .animate-butterfly-wing,
+  .animate-butterfly-a,
+  .animate-butterfly-b,
+  .animate-butterfly-c,
+  .animate-float-heart,
+  .animate-orb,
+  .animate-twinkle,
+  .animate-sway,
+  .animate-bouquet-breathe,
+  .animate-pulse-soft {
+    animation: none !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
